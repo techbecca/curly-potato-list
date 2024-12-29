@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @MicronautTest
-public class ListControllerTest {
+public class HelloControllerTest {
 
     @Inject
     @Client("/")

@@ -6,7 +6,7 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
 
 @Controller("/hello")
-public class ListController {
+public class HelloController {
     
     @Get
     @Produces(MediaType.TEXT_PLAIN)
