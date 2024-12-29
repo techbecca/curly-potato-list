@@ -10,9 +10,9 @@ public class ListController {
     
     @Get
     @Produces(MediaType.TEXT_PLAIN)
-    public String index() {
+    public String helloWorld() {
       return "Hello World!";
     }
-    
+
 
 }
