@@ -1,3 +1,5 @@
 # suppress inspection "UnusedProperty" for whole file
 #Sat Dec 28 13:44:53 CET 2024
-micronaut.application.name=list
+micronaut:
+  application:
+    name: "list"
