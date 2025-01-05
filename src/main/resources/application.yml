@@ -8,17 +8,17 @@ micronaut:
       enabled: true
       configurations:
         default:
-          allowed-origins: ['*']
-  #          - http://localhost:5173 # Vite's default dev server port
-          allowed-methods: ['*']
-  #          - GET
-  #          - POST
-  #          - PUT
-  #          - DELETE
-  #          - OPTIONS
-          allowed-headers: ['*']
-  #          - Content-Type
-  #          - Authorization
+          allowed-origins:
+            - http://localhost:5173 # Vite's default dev server port
+          allowed-methods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+          allowed-headers:
+            - Content-Type
+            - Authorization
 
 logging:
   level:
