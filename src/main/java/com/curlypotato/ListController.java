@@ -1,19 +1,36 @@
 package com.curlypotato;
 
+import io.micronaut.context.annotation.Parameter;
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Options;
+import io.micronaut.http.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller("/list-items")
 public class ListController {
-    
+
+    List<String> items;
+
+    {
+        items = new ArrayList<>();
+        items.add("item1");
+        items.add("item2");
+        items.add("item3");
+    }
+
     @Get
     public HttpResponse<List<String>> index() {
-        final List<String> items = List.of("item1", "item2", "item3");
         return HttpResponse.ok(items);
+    }
+
+    @Post("/add")
+    public HttpResponse<List<String>> addItem(@Parameter final String item) {
+        items.add(item);
+        return HttpResponse.ok(items)
+                .header("Access-Control-Allow-Origin", "http://localhost:5173")
+                .header("Access-Control-Allow-Methods", "POST")
+                .header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     }
 
     // Handle OPTIONS (preflight) requests for CORS

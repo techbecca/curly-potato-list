@@ -43,4 +43,22 @@ public class ListControllerTest {
         assertIterableEquals(expectedList, actualList);
     }
 
+    @Test
+    void addsToList() throws IOException {
+        String body = "{\"item\": \"item4\"}";
+
+        // given
+        final HttpRequest<?> request = HttpRequest.POST("/list-items/add", body).accept(MediaType.APPLICATION_JSON, MediaType.TEXT_JSON);
+
+        // when
+        final String result = httpClient.toBlocking().retrieve(request);
+
+        // then
+        String expected = "[\"item1\", \"item2\", \"item3\", \"item4\"]";
+        final List<String> expectedList = jsonMapper.readValue(expected, Argument.LIST_OF_STRING);
+        assertNotNull(result);
+        final List<String> actualList = jsonMapper.readValue(result, Argument.LIST_OF_STRING);
+        assertIterableEquals(expectedList, actualList);
+
+    }
 }
